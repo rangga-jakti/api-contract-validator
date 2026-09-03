@@ -1,0 +1,40 @@
+openapi: "3.0.0"
+info:
+  title: Permission Service
+  version: "1.0"
+paths:
+  /users/{user_id}/permissions:
+    get:
+      summary: Get user permissions
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: User permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                  role:
+                    type: string
+                  permissions:
+                    type: object
+                    properties:
+                      resources:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            resource_id:
+                              type: integer
+                            resource_name:
+                              type: string
+                            access_level:
+                              type: integer

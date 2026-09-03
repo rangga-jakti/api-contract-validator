@@ -1,0 +1,76 @@
+{
+  "case_id": "case_07",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:50:53.035035",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:50:53.038470",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "GET /reports"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:50:53.038484",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:50:53.039198",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "GET /reports"
+      ],
+      "models_found": []
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:50:53.039210",
+      "elapsed_seconds": 0.0,
+      "spec_endpoints": [
+        "GET /reports"
+      ],
+      "code_endpoints": [
+        "GET /reports"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:50:53.039218",
+      "elapsed_seconds": 0.0,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:50:54.692087",
+      "elapsed_seconds": 1.65,
+      "agent": "Detector",
+      "llm_violations": 3,
+      "deterministic_violations": 0,
+      "total_after_dedup": 2,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"PARAM_NAME_MISMATCH\",\n      \"endpoint\": \"GET /reports\",\n      \"spec_says\": \"Query param 'page' (optional, integer)\",\n      \"code_does\": \"Function arg 'offset' (int)\",\n      \"evidence\": \"Spec defines 'page', code function list_reports uses 'offset'\",\n      \"confidence\": \"HIGH\"\n    },\n    {\n      \"type\": \"PARAM_NAME_MISMATCH\",\n      \"endpoint\": \"GET /reports\",\n      \"spec_says\": \"Query param 'limit' (optional, integer)\",\n      \"code_does\": \"Function arg 'count' (int)\",\n      \"evidence\": \"Spec defines 'limit', code function list_reports uses 'count'\",\n    "
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:50:54.692126",
+      "elapsed_seconds": 1.66,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:50:58.633542",
+      "elapsed_seconds": 3.94,
+      "agent": "ReportWriter"
+    }
+  ]
+}

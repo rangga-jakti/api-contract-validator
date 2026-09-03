@@ -1,0 +1,76 @@
+{
+  "case_id": "case_02",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:49:45.537641",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:49:45.541596",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "GET /products"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:49:45.541632",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:49:45.543491",
+      "elapsed_seconds": 0.01,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "GET /products"
+      ],
+      "models_found": []
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:49:45.543517",
+      "elapsed_seconds": 0.01,
+      "spec_endpoints": [
+        "GET /products"
+      ],
+      "code_endpoints": [
+        "GET /products"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:49:45.543528",
+      "elapsed_seconds": 0.01,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:49:47.502449",
+      "elapsed_seconds": 1.96,
+      "agent": "Detector",
+      "llm_violations": 4,
+      "deterministic_violations": 0,
+      "total_after_dedup": 1,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"FIELD_NAME_MISMATCH\",\n      \"endpoint\": \"GET /products\",\n      \"spec_says\": \"Response field 'name' is expected\",\n      \"code_does\": \"Code returns field 'display_name' in module vars\",\n      \"evidence\": \"Spec field: 'name'; Code module var: 'display_name'\",\n      \"confidence\": \"HIGH\"\n    },\n    {\n      \"type\": \"FIELD_NAME_MISMATCH\",\n      \"endpoint\": \"GET /products\",\n      \"spec_says\": \"Response field 'price' is expected\",\n      \"code_does\": \"Code returns field 'base_price' in module vars\",\n      \"evidence\": \"Spec field: 'price'; Code module var: 'base_p"
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:49:47.502484",
+      "elapsed_seconds": 1.97,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:49:49.216796",
+      "elapsed_seconds": 1.71,
+      "agent": "ReportWriter"
+    }
+  ]
+}

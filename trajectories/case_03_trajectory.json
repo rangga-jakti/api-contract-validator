@@ -1,0 +1,76 @@
+{
+  "case_id": "case_03",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:49:57.227043",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:49:57.228546",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "DELETE /orders/{order_id}"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:49:57.228556",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:49:57.228904",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "DELETE /orders/{order_id}"
+      ],
+      "models_found": []
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:49:57.228916",
+      "elapsed_seconds": 0.0,
+      "spec_endpoints": [
+        "DELETE /orders/{order_id}"
+      ],
+      "code_endpoints": [
+        "DELETE /orders/{order_id}"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:49:57.228924",
+      "elapsed_seconds": 0.0,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:49:58.702753",
+      "elapsed_seconds": 1.47,
+      "agent": "Detector",
+      "llm_violations": 2,
+      "deterministic_violations": 0,
+      "total_after_dedup": 2,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"STATUS_CODE_MISMATCH\",\n      \"endpoint\": \"DELETE /orders/{order_id}\",\n      \"spec_says\": \"Response 204: Order successfully cancelled, no content returned\",\n      \"code_does\": \"Declared status code: 200\",\n      \"evidence\": \"Spec defines 204, code declares 200\",\n      \"confidence\": \"HIGH\"\n    },\n    {\n      \"type\": \"FIELD_NAME_MISMATCH\",\n      \"endpoint\": \"DELETE /orders/{order_id}\",\n      \"spec_says\": \"no content returned\",\n      \"code_does\": \"Return fields: ['message', 'order_id']\",\n      \"evidence\": \"Spec expects empty body (204), code returns JSON obj"
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:49:58.702804",
+      "elapsed_seconds": 1.48,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:50:00.465742",
+      "elapsed_seconds": 1.76,
+      "agent": "ReportWriter"
+    }
+  ]
+}

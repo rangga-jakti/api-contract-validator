@@ -1,0 +1,17 @@
+openapi: "3.0.0"
+info:
+  title: Order Service
+  version: "1.0"
+paths:
+  /orders/{order_id}:
+    delete:
+      summary: Cancel an order
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Order successfully cancelled, no content returned

@@ -1,0 +1,80 @@
+{
+  "case_id": "case_04",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:50:08.469105",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:50:08.482650",
+      "elapsed_seconds": 0.01,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "GET /items"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:50:08.482669",
+      "elapsed_seconds": 0.01,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:50:08.483395",
+      "elapsed_seconds": 0.01,
+      "endpoints_found": 2,
+      "endpoint_list": [
+        "GET /items",
+        "GET /health"
+      ],
+      "models_found": []
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:50:08.483412",
+      "elapsed_seconds": 0.01,
+      "spec_endpoints": [
+        "GET /items"
+      ],
+      "code_endpoints": [
+        "GET /items",
+        "GET /health"
+      ],
+      "undocumented": [
+        "GET /health"
+      ]
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:50:08.483429",
+      "elapsed_seconds": 0.01,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:50:09.521860",
+      "elapsed_seconds": 1.04,
+      "agent": "Detector",
+      "llm_violations": 0,
+      "deterministic_violations": 1,
+      "total_after_dedup": 1,
+      "raw_preview": "{\n  \"violations\": [],\n  \"reasoning\": \"The code return fields for GET /items match the spec field names, the status code matches, and no type mismatches or missing parameters are evident from the provided summaries.\"\n}"
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:50:09.521891",
+      "elapsed_seconds": 1.05,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:50:19.022654",
+      "elapsed_seconds": 9.5,
+      "agent": "ReportWriter"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "case_id": "case_09",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:51:17.167366",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:51:17.171899",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "POST /webhooks"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:51:17.171927",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:51:17.174632",
+      "elapsed_seconds": 0.01,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "POST /webhooks"
+      ],
+      "models_found": [
+        "WebhookPayload"
+      ]
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:51:17.174680",
+      "elapsed_seconds": 0.01,
+      "spec_endpoints": [
+        "POST /webhooks"
+      ],
+      "code_endpoints": [
+        "POST /webhooks"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:51:17.174696",
+      "elapsed_seconds": 0.01,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:51:19.329388",
+      "elapsed_seconds": 2.15,
+      "agent": "Detector",
+      "llm_violations": 2,
+      "deterministic_violations": 0,
+      "total_after_dedup": 2,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"SECURITY_MISSING\",\n      \"endpoint\": \"POST /webhooks\",\n      \"spec_says\": \"Header param 'X-Webhook-Secret' is required\",\n      \"code_does\": \"Function 'receive_webhook' does not declare or validate the 'X-Webhook-Secret' header\",\n      \"evidence\": \"Spec: Header params: X-Webhook-Secret(required, string); Code Args: request:Request, body:WebhookPayload (no Header dependency)\",\n      \"confidence\": \"HIGH\"\n    },\n    {\n      \"type\": \"TYPE_MISMATCH\",\n      \"endpoint\": \"POST /webhooks\",\n      \"spec_says\": \"Field 'payload' in request body is type=object\",\n     "
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:51:19.329435",
+      "elapsed_seconds": 2.16,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:51:21.781713",
+      "elapsed_seconds": 2.45,
+      "agent": "ReportWriter"
+    }
+  ]
+}

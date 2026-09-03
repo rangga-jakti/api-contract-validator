@@ -1,0 +1,95 @@
+{
+  "method": "agent_v1_orchestrated",
+  "tp": 9,
+  "fp": 0,
+  "fn": 0,
+  "tn": 1,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "avg_time_seconds": 4.92,
+  "estimated_cost_usd": 0.0,
+  "total_tokens": 0,
+  "per_case_results": [
+    {
+      "case_id": "case_01",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 1,
+      "elapsed_seconds": 3.38
+    },
+    {
+      "case_id": "case_02",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 1,
+      "elapsed_seconds": 3.68
+    },
+    {
+      "case_id": "case_03",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 2,
+      "elapsed_seconds": 3.24
+    },
+    {
+      "case_id": "case_04",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 1,
+      "elapsed_seconds": 10.55
+    },
+    {
+      "case_id": "case_05",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 1,
+      "elapsed_seconds": 4.9
+    },
+    {
+      "case_id": "case_06",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 1,
+      "elapsed_seconds": 5.1
+    },
+    {
+      "case_id": "case_07",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 2,
+      "elapsed_seconds": 5.6
+    },
+    {
+      "case_id": "case_08",
+      "label": "TN",
+      "detected": false,
+      "actual": false,
+      "violation_count": 0,
+      "elapsed_seconds": 2.51
+    },
+    {
+      "case_id": "case_09",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 2,
+      "elapsed_seconds": 4.61
+    },
+    {
+      "case_id": "case_10",
+      "label": "TP",
+      "detected": true,
+      "actual": true,
+      "violation_count": 1,
+      "elapsed_seconds": 5.61
+    }
+  ]
+}

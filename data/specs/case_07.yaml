@@ -1,0 +1,42 @@
+openapi: "3.0.0"
+info:
+  title: Report Service
+  version: "1.0"
+paths:
+  /reports:
+    get:
+      summary: List paginated reports
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+      responses:
+        "200":
+          description: Paginated report list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                  page:
+                    type: integer
+                  total:
+                    type: integer

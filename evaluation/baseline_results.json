@@ -1,0 +1,113 @@
+{
+  "method": "baseline_rule_based_script",
+  "description": "Regex + string matching, no LLM, no AST",
+  "tp": 4,
+  "fp": 0,
+  "fn": 5,
+  "tn": 1,
+  "precision": 1.0,
+  "recall": 0.444,
+  "f1": 0.615,
+  "avg_time_seconds": 0.01,
+  "estimated_cost_usd": 0.0,
+  "per_case_results": [
+    {
+      "case_id": "case_01",
+      "detected_violation": true,
+      "raw_response": "POSSIBLE_OPTIONAL: email in POST /users",
+      "elapsed_seconds": 0.01,
+      "violations_found": [
+        "POSSIBLE_OPTIONAL: email in POST /users"
+      ],
+      "label": "TP",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_02",
+      "detected_violation": false,
+      "raw_response": "NO VIOLATIONS FOUND",
+      "elapsed_seconds": 0.01,
+      "violations_found": [],
+      "label": "FN",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_03",
+      "detected_violation": true,
+      "raw_response": "STATUS_CODE: 204 declared but not found in decorator",
+      "elapsed_seconds": 0.01,
+      "violations_found": [
+        "STATUS_CODE: 204 declared but not found in decorator"
+      ],
+      "label": "TP",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_04",
+      "detected_violation": true,
+      "raw_response": "UNDOCUMENTED: GET /health",
+      "elapsed_seconds": 0.01,
+      "violations_found": [
+        "UNDOCUMENTED: GET /health"
+      ],
+      "label": "TP",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_05",
+      "detected_violation": false,
+      "raw_response": "NO VIOLATIONS FOUND",
+      "elapsed_seconds": 0.01,
+      "violations_found": [],
+      "label": "FN",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_06",
+      "detected_violation": false,
+      "raw_response": "NO VIOLATIONS FOUND",
+      "elapsed_seconds": 0.01,
+      "violations_found": [],
+      "label": "FN",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_07",
+      "detected_violation": false,
+      "raw_response": "NO VIOLATIONS FOUND",
+      "elapsed_seconds": 0.01,
+      "violations_found": [],
+      "label": "FN",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_08",
+      "detected_violation": false,
+      "raw_response": "NO VIOLATIONS FOUND",
+      "elapsed_seconds": 0.01,
+      "violations_found": [],
+      "label": "TN",
+      "actual_has_violation": false
+    },
+    {
+      "case_id": "case_09",
+      "detected_violation": true,
+      "raw_response": "STATUS_CODE: 401 declared but not found in decorator",
+      "elapsed_seconds": 0.01,
+      "violations_found": [
+        "STATUS_CODE: 401 declared but not found in decorator"
+      ],
+      "label": "TP",
+      "actual_has_violation": true
+    },
+    {
+      "case_id": "case_10",
+      "detected_violation": false,
+      "raw_response": "NO VIOLATIONS FOUND",
+      "elapsed_seconds": 0.01,
+      "violations_found": [],
+      "label": "FN",
+      "actual_has_violation": true
+    }
+  ]
+}

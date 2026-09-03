@@ -1,0 +1,78 @@
+{
+  "case_id": "case_05",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:50:27.026597",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:50:27.029070",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "POST /auth/login"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:50:27.029079",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:50:27.030095",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "POST /auth/login"
+      ],
+      "models_found": [
+        "LoginRequest"
+      ]
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:50:27.030107",
+      "elapsed_seconds": 0.0,
+      "spec_endpoints": [
+        "POST /auth/login"
+      ],
+      "code_endpoints": [
+        "POST /auth/login"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:50:27.030116",
+      "elapsed_seconds": 0.0,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:50:28.354528",
+      "elapsed_seconds": 1.32,
+      "agent": "Detector",
+      "llm_violations": 1,
+      "deterministic_violations": 0,
+      "total_after_dedup": 1,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"RESPONSE_FIELD_RENAME\",\n      \"endpoint\": \"POST /auth/login\",\n      \"spec_says\": \"Response 200 includes field 'token' of type string\",\n      \"code_does\": \"Code returns field 'access_token' instead of 'token'\",\n      \"evidence\": \"Spec field: 'token'; Code returned keys: ['issued_at', 'access_token', 'expires_in']\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"reasoning\": \"The code returns 'access_token' where the spec requires 'token', while 'expires_in' matches and request validation is consistent.\"\n}"
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:50:28.354564",
+      "elapsed_seconds": 1.33,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:50:31.922793",
+      "elapsed_seconds": 3.57,
+      "agent": "ReportWriter"
+    }
+  ]
+}

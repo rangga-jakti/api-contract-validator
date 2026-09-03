@@ -1,0 +1,78 @@
+{
+  "case_id": "case_06",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:50:39.926336",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:50:39.929266",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "PUT /users/{user_id}"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:50:39.929276",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:50:39.930515",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "PUT /users/{user_id}"
+      ],
+      "models_found": [
+        "UpdateUserRequest"
+      ]
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:50:39.930528",
+      "elapsed_seconds": 0.0,
+      "spec_endpoints": [
+        "PUT /users/{user_id}"
+      ],
+      "code_endpoints": [
+        "PUT /users/{user_id}"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:50:39.930538",
+      "elapsed_seconds": 0.0,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:50:41.228143",
+      "elapsed_seconds": 1.3,
+      "agent": "Detector",
+      "llm_violations": 1,
+      "deterministic_violations": 0,
+      "total_after_dedup": 1,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"BEHAVIOR_CONTRADICTION\",\n      \"endpoint\": \"PUT /users/{user_id}\",\n      \"spec_says\": \"Request body is optional (required=False)\",\n      \"code_does\": \"Module raises HTTPException with status code 400\",\n      \"evidence\": \"MODULE-WIDE HTTPExceptions: ['400'] and NOTE: If spec says requestBody required=false but code raises 400 -> BEHAVIOR_CONTRADICTION\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"reasoning\": \"The spec defines the request body as optional, but the code analysis indicates a 400 exception is raised, which contradicts the optional nature of the"
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:50:41.228174",
+      "elapsed_seconds": 1.3,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:50:45.031239",
+      "elapsed_seconds": 3.8,
+      "agent": "ReportWriter"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "case_id": "case_01",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:49:34.152842",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:49:34.156718",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "POST /users"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:49:34.156743",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:49:34.157556",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "POST /users"
+      ],
+      "models_found": [
+        "CreateUserRequest"
+      ]
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:49:34.157576",
+      "elapsed_seconds": 0.0,
+      "spec_endpoints": [
+        "POST /users"
+      ],
+      "code_endpoints": [
+        "POST /users"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:49:34.157585",
+      "elapsed_seconds": 0.0,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:49:35.962298",
+      "elapsed_seconds": 1.8,
+      "agent": "Detector",
+      "llm_violations": 1,
+      "deterministic_violations": 0,
+      "total_after_dedup": 1,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"MISSING_REQUIRED_PARAM\",\n      \"endpoint\": \"POST /users\",\n      \"spec_says\": \"Field 'email' is in the required list: ['email', 'username']\",\n      \"code_does\": \"Field 'email' is Optional with default=None in CreateUserRequest\",\n      \"evidence\": \"Pydantic model CreateUserRequest: Optional: ['email'], Field 'email': type=Optional[str], required=False, default=None\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"reasoning\": \"The spec requires 'email' in the request body, but the code defines it as an optional field with a default value.\"\n}"
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:49:35.962344",
+      "elapsed_seconds": 1.81,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:49:37.532965",
+      "elapsed_seconds": 1.57,
+      "agent": "ReportWriter"
+    }
+  ]
+}

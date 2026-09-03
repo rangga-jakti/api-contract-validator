@@ -1,0 +1,76 @@
+{
+  "case_id": "case_10",
+  "trajectory": [
+    {
+      "step": "spec_parser_start",
+      "timestamp": "2026-08-30T17:51:29.794599",
+      "elapsed_seconds": 0.0,
+      "input": "OpenAPI YAML"
+    },
+    {
+      "step": "spec_parser_complete",
+      "timestamp": "2026-08-30T17:51:29.797948",
+      "elapsed_seconds": 0.0,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "GET /users/{user_id}/permissions"
+      ]
+    },
+    {
+      "step": "code_analyzer_start",
+      "timestamp": "2026-08-30T17:51:29.797959",
+      "elapsed_seconds": 0.0,
+      "input": "Python FastAPI source"
+    },
+    {
+      "step": "code_analyzer_complete",
+      "timestamp": "2026-08-30T17:51:29.800708",
+      "elapsed_seconds": 0.01,
+      "endpoints_found": 1,
+      "endpoint_list": [
+        "GET /users/{user_id}/permissions"
+      ],
+      "models_found": []
+    },
+    {
+      "step": "deterministic_diff",
+      "timestamp": "2026-08-30T17:51:29.800830",
+      "elapsed_seconds": 0.01,
+      "spec_endpoints": [
+        "GET /users/{user_id}/permissions"
+      ],
+      "code_endpoints": [
+        "GET /users/{user_id}/permissions"
+      ],
+      "undocumented": []
+    },
+    {
+      "step": "detector_start",
+      "timestamp": "2026-08-30T17:51:29.800877",
+      "elapsed_seconds": 0.01,
+      "agent": "Detector"
+    },
+    {
+      "step": "detector_complete",
+      "timestamp": "2026-08-30T17:51:31.307578",
+      "elapsed_seconds": 1.51,
+      "agent": "Detector",
+      "llm_violations": 1,
+      "deterministic_violations": 0,
+      "total_after_dedup": 1,
+      "raw_preview": "{\n  \"violations\": [\n    {\n      \"type\": \"TYPE_MISMATCH\",\n      \"endpoint\": \"GET /users/{user_id}/permissions\",\n      \"spec_says\": \"Field 'permissions.resources[].access_level': type=integer\",\n      \"code_does\": \"Returns string values for access_level (e.g., 'read', 'write', 'admin')\",\n      \"evidence\": \"MODULE-WIDE String enum values: ['read', 'write', 'admin'] and NOTE: If spec declares related field as type:integer, this is TYPE_MISMATCH\",\n      \"confidence\": \"HIGH\"\n    }\n  ],\n  \"reasoning\": \"The spec defines access_level as an integer, but the code uses string enum values for it, creating a"
+    },
+    {
+      "step": "report_writer_start",
+      "timestamp": "2026-08-30T17:51:31.307610",
+      "elapsed_seconds": 1.51,
+      "agent": "ReportWriter"
+    },
+    {
+      "step": "report_writer_complete",
+      "timestamp": "2026-08-30T17:51:35.402319",
+      "elapsed_seconds": 4.09,
+      "agent": "ReportWriter"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+openapi: "3.0.0"
+info:
+  title: Notification Service
+  version: "1.0"
+paths:
+  /notifications:
+    get:
+      summary: Get user notifications
+      responses:
+        "200":
+          description: List of notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    message:
+                      type: string
+                    read:
+                      type: boolean
+  /notifications/{notification_id}/read:
+    post:
+      summary: Mark a notification as read
+      parameters:
+        - name: notification_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Notification marked as read
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  read:
+                    type: boolean
